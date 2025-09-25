@@ -11,7 +11,7 @@ private class ContactSupportTriggerTest {
         Test.stopTest();
 
         List<Case> cases = [
-            SELECT Id, Subject, ContactId, RecordType.Name
+            SELECT Id, Subject, ContactId
             FROM Case
             WHERE ContactId = :c.Id
         ];
