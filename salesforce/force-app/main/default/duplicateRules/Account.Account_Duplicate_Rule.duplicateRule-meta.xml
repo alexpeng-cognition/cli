@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Account_Duplicate_Rule</fullName>
+  <masterLabel>Account Duplicate Rule</masterLabel>
+  <description>Blocks creation of duplicate Accounts with the same Name.</description>
+  <isActive>true</isActive>
+  <actionOnInsert>Block</actionOnInsert>
+  <actionOnUpdate>Allow</actionOnUpdate>
+  <alertText>Possible duplicate Account found based on exact name.</alertText>
+  <createReporting>true</createReporting>
+  <securityOption>EnforceSharingRules</securityOption>
+  <duplicateRuleMatchRules>
+    <matchingRule>Account.Exact_Account_Name</matchingRule>
+    <ruleLevel>PotentialDuplicates</ruleLevel>
+  </duplicateRuleMatchRules>
+</DuplicateRule>
