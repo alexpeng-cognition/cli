@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <label>Contact AutoCreate Case</label>
+    <processType>Flow</processType>
+    <status>Active</status>
+
+    <variables>
+        <name>rt_Case_IT_Request</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>RecordType</objectType>
+    </variables>
+
+    <start>
+        <location>Trigger</location>
+        <triggerType>RecordUpdate</triggerType>
+        <recordTriggerType>Update</recordTriggerType>
+        <object>Contact</object>
+        <triggerOrder>After</triggerOrder>
+        <conditionLogic>and</conditionLogic>
+        <conditions>
+            <leftValueReference>$Record__Prior.Needs_Support__c</leftValueReference>
+            <operator>equals</operator>
+            <rightValue>false</rightValue>
+        </conditions>
+        <conditions>
+            <leftValueReference>$Record.Needs_Support__c</leftValueReference>
+            <operator>equals</operator>
+            <rightValue>true</rightValue>
+        </conditions>
+    </start>
+
+    <elements>
+        <getRecords>
+            <name>Get_Case_RecordType_IT_Request</name>
+            <label>Get Case RecordType: IT Request</label>
+            <description>Fetch Case RecordType named IT Request</description>
+            <connector>
+                <targetReference>Decision_RecordType_Found</targetReference>
+            </connector>
+            <filterLogic>and</filterLogic>
+            <filters>
+                <leftValueReference>RecordType.SobjectType</leftValueReference>
+                <operator>equals</operator>
+                <rightValue>Case</rightValue>
+            </filters>
+            <filters>
+                <leftValueReference>RecordType.Name</leftValueReference>
+                <operator>equals</operator>
+                <rightValue>IT Request</rightValue>
+            </filters>
+            <getFirstRecordOnly>true</getFirstRecordOnly>
+            <object>RecordType</object>
+            <outputAssignments>
+                <assignToReference>rt_Case_IT_Request</assignToReference>
+                <field>Id</field>
+            </outputAssignments>
+            <storeOutputAutomatically>false</storeOutputAutomatically>
+        </getRecords>
+
+        <decision>
+            <name>Decision_RecordType_Found</name>
+            <label>RecordType Found?</label>
+            <defaultConnector>
+                <targetReference>End_No_RT</targetReference>
+            </defaultConnector>
+            <rules>
+                <name>Has_RT</name>
+                <label>Has RecordType</label>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>rt_Case_IT_Request.Id</leftValueReference>
+                    <operator>isNull</operator>
+                    <rightValue>false</rightValue>
+                </conditions>
+                <connector>
+                    <targetReference>Create_Case</targetReference>
+                </connector>
+            </rules>
+        </decision>
+
+        <createRecords>
+            <name>Create_Case</name>
+            <label>Create Case</label>
+            <connector>
+                <targetReference>End_Success</targetReference>
+            </connector>
+            <inputAssignments>
+                <field>ContactId</field>
+                <valueReference>$Record.Id</valueReference>
+            </inputAssignments>
+            <inputAssignments>
+                <field>RecordTypeId</field>
+                <valueReference>rt_Case_IT_Request.Id</valueReference>
+            </inputAssignments>
+            <inputAssignments>
+                <field>Subject</field>
+                <value>Support Needed for {!$Record.Name}</value>
+            </inputAssignments>
+            <object>Case</object>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </createRecords>
+
+        <waits>
+            <name>End_No_RT</name>
+            <label>End (No RecordType Found)</label>
+        </waits>
+
+        <waits>
+            <name>End_Success</name>
+            <label>End</label>
+        </waits>
+    </elements>
+</Flow>
