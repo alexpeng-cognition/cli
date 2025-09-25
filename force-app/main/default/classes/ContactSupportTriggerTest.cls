@@ -20,10 +20,8 @@ private class ContactSupportTriggerTest {
         System.assertEquals(c.Id, cases[0].ContactId, 'Contact should be linked');
 
         // Edit without changing flag should not create duplicates
-        Test.startTest();
         c.FirstName = 'Edited';
         update c;
-        Test.stopTest();
 
         Integer countAfter = [SELECT COUNT() FROM Case WHERE ContactId = :c.Id];
         System.assertEquals(1, countAfter, 'No duplicate cases should be created');
