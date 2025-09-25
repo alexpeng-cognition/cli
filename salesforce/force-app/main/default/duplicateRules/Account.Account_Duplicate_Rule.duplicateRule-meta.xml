@@ -10,6 +10,5 @@
   <securityOption>EnforceSharingRules</securityOption>
   <duplicateRuleMatchRules>
     <matchingRule>Account.Exact_Account_Name</matchingRule>
-    <ruleLevel>PotentialDuplicates</ruleLevel>
   </duplicateRuleMatchRules>
 </DuplicateRule>
