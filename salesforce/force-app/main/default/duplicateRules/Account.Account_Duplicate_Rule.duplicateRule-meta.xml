@@ -10,5 +10,7 @@
   <securityOption>EnforceSharingRules</securityOption>
   <duplicateRuleMatchRules>
     <matchingRule>Account.Exact_Account_Name</matchingRule>
+    <object>Account</object>
+    <sortOrder>1</sortOrder>
   </duplicateRuleMatchRules>
 </DuplicateRule>
