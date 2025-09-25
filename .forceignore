@@ -6,3 +6,4 @@ package.xml
 **/node_modules
 **/.sfdx
 **/.sf
+force-app/main/default/flows/**
