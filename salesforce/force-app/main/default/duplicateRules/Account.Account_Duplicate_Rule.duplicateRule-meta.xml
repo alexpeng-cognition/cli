@@ -7,7 +7,6 @@
   <actionOnInsert>Block</actionOnInsert>
   <actionOnUpdate>Allow</actionOnUpdate>
   <alertText>Possible duplicate Account found based on exact name.</alertText>
-  <createReporting>true</createReporting>
   <securityOption>EnforceSharingRules</securityOption>
   <duplicateRuleMatchRules>
     <matchingRule>Account.Exact_Account_Name</matchingRule>
