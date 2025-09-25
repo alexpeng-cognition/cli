@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>IT_Tier_1</members>
+        <name>Queue</name>
+    </types>
+    <types>
+        <members>Case-IT Request Layout</members>
+        <members>Case-Incident Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Case</members>
+        <name>AssignmentRules</name>
+    </types>
+    <types>
+        <members>unfiled$public/Case_Auto_Response</members>
+        <name>EmailTemplate</name>
+    </types>
+    <version>64.0</version>
+</Package>

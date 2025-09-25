@@ -1,0 +1,10 @@
+Thank you for contacting IT support. We have received your case and it has been assigned to our IT Tier 1 team.
+
+Case Number: {!Case.CaseNumber}
+Subject: {!Case.Subject}
+Priority: {!Case.Priority}
+
+We will review your request and respond as soon as possible.
+
+Best regards,
+IT Support Team
