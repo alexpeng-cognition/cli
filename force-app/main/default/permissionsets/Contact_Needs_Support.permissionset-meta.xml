@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Contact Needs Support Access</label>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Needs_Support__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+</PermissionSet>
