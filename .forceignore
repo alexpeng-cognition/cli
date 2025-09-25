@@ -1,0 +1,9 @@
+# Ignore temporary and generated files
+package.xml
+.DS_Store
+**/.*.swp
+**/*.log
+**/node_modules
+**/.sfdx
+**/.sf
+force-app/main/default/flows/**
