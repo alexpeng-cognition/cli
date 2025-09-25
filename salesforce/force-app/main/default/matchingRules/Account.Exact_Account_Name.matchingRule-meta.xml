@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MatchingRule xmlns="http://soap.sforce.com/2006/04/metadata">
-  <fullName>Exact_Account_Name</fullName>
-  <sobjectType>Account</sobjectType>
+  <fullName>Account.Exact_Account_Name</fullName>
   <booleanFilter>1</booleanFilter>
   <matchBlank>false</matchBlank>
   <ruleStatus>Active</ruleStatus>
